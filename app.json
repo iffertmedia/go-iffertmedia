@@ -11,10 +11,6 @@
       "supportsTablet": true,
       "bundleIdentifier": "com.vibecode.goiffertmedia",
       "buildNumber": "3",
-      "infoPlist": {
-        "NSCameraUsageDescription": "GO Iffert Media uses the camera to capture new photos inside the app for your projects.",
-        "NSMicrophoneUsageDescription": "GO Iffert Media uses the microphone to record audio clips that stay with your in-app creations."
-      }
     },
     "android": {
   "package": "com.iffertmedia.goiffertmedia",
