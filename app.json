@@ -17,8 +17,9 @@
       }
     },
     "android": {
-      "edgeToEdgeEnabled": true
-    },
+  "package": "com.iffertmedia.goiffertmedia",
+  "edgeToEdgeEnabled": true
+},
     "plugins": [
       "expo-router"
     ],
