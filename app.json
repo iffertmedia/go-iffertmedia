@@ -22,6 +22,11 @@
     "experiments": {
       "typedRoutes": true
     },
-    "icon": "./icon.png"
+    "icon": "./icon.png",
+"extra": {
+  "eas": {
+    "projectId": "fed41c9b-4def-4bc2-a9af-a671b14763d9"
+  }
+}
   }
 }
