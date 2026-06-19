@@ -1,0 +1,53 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+model Creator {
+  id           String     @id @default(cuid())
+  handle       String     @unique
+  name         String
+  totalPoints  Int        @default(0)
+  avatarColor  String     @default("#FF0050")
+  status       String     @default("Pending") // Pending | Approved | Rejected
+  createdAt    DateTime   @default(now())
+  pointLogs    PointLog[]
+  submissions  Submission[]
+}
+
+model Challenge {
+  id           String     @id @default(cuid())
+  title        String
+  description  String
+  rewardPoints Int
+  icon         String     @default("Sparkles")
+  createdAt    DateTime   @default(now())
+  status       String     @default("Active") // Active | Ended
+  submissions  Submission[]
+}
+
+model PointLog {
+  id            String   @id @default(cuid())
+  creatorId    String
+  creator      Creator  @relation(fields: [creatorId], references: [id], onDelete: Cascade)
+  action       String
+  note         String?
+  pointsChanged Int
+  timestamp    DateTime @default(now())
+}
+
+model Submission {
+  id          String   @id @default(cuid())
+  creatorId   String
+  creator     Creator  @relation(fields: [creatorId], references: [id], onDelete: Cascade)
+  challengeId String
+  challenge   Challenge @relation(fields: [challengeId], references: [id], onDelete: Cascade)
+  proof       String
+  status      String   @default("Pending") // Pending | Approved | Rejected
+  createdAt   DateTime @default(now())
+  reviewedAt  DateTime?
+}
